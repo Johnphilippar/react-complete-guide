@@ -68,41 +68,53 @@ const ExpenseForm = (props) => {
       date: new Date(enteredDate)
     };
 
+    //Console.log(expenseData) this is for the mean time while making the props.onSaveExpenseData(expenseData) in the NewExpense.JS
     props.onSaveExpenseData(expenseData);
     setEnteredTitle('');
     setEnteredAmount('');
     setEnteredDate('');
+
   }
+  
+  // const [addExpense , setAddExpense] = useState(false)
+
+  // const addExpenseHandler = () => {
+  //   setAddExpense(true)
+  // }
+  // const cancelExpenseHandler = () => {
+  //   setAddExpense(false)
+  // }
   
 
   return (
     <div>
       <form onSubmit={submitHandler}>
-        <div className="new-expense__controls">
-          <div className="new-expense__control">
-            <label htmlFor="">Title</label>
-            <input type="text" value={enteredTitle} onChange={titleChangeHandler}/>
-            {/* //ALTERNATIVE SHARED HANDLER FUNCTION */}
-            {/* <input type="text" onChange={(event) => inputChangeHandler('title' , event.target.value)}/> */}
+       <div className="new-expense__controls">
+         <div className="new-expense__control">
+           <label htmlFor="">Title</label>
+           <input type="text" value={enteredTitle} onChange={titleChangeHandler}/>
+           {/* //ALTERNATIVE SHARED HANDLER FUNCTION */}
+           {/* <input type="text" onChange={(event) => inputChangeHandler('title' , event.target.value)}/> */}
 
-          </div>
-          <div className="new-expense__control">
-            <label htmlFor="">Amount</label>
-            <input type="number" value={enteredAmount} min="0.01" step="0.01" onChange={amountChangeHandler}/>
-            {/* //ALTERNATIVE SHARED HANDLER FUNCTION */}
-            {/* <input type="number" min="0.01" step="0.01" onChange={(event) => inputChangeHandler('amount', event.target.value)}/> */}
-          </div>
-          <div className="new-expense__control">
-            <label htmlFor="">Date</label>
-            <input type="date" value={enteredDate} min="2020-01-01" max="2025-12-31"  onChange={dateChangeHandler}/>
-            {/* //ALTERNATIVE SHARED HANDLER FUNCTION */}
-            {/* <input type="date" min="2020-01-01" max="2025-12-31" onChange={(event) => inputChangeHandler('date',event.target.value)}/> */}
-          </div>
+         </div>
+         <div className="new-expense__control">
+           <label htmlFor="">Amount</label>
+           <input type="number" value={enteredAmount} min="0.01" step="0.01" onChange={amountChangeHandler}/>
+           {/* //ALTERNATIVE SHARED HANDLER FUNCTION */}
+           {/* <input type="number" min="0.01" step="0.01" onChange={(event) => inputChangeHandler('amount', event.target.value)}/> */}
+         </div>
+         <div className="new-expense__control">
+           <label htmlFor="">Date</label>
+           <input type="date" value={enteredDate} min="2020-01-01" max="2025-12-31"  onChange={dateChangeHandler}/>
+           {/* //ALTERNATIVE SHARED HANDLER FUNCTION */}
+           {/* <input type="date" min="2020-01-01" max="2025-12-31" onChange={(event) => inputChangeHandler('date',event.target.value)}/> */}
+         </div>
         </div>
         <div className="new-expense__actions">
-            <button type="submit" >Add Expense</button>
+            <button type="button" onClick={props.onCancel}>Cancel</button>
+            <button type="submit">Add Expense</button>
         </div>
-      </form>
+     </form>
     </div>
   );
 };
